@@ -1,5 +1,5 @@
 /* =============================================================================
-   JORGE PÉREZ · ALTA JOYERÍA · LÓGICA DEL SITIO
+   JORGE ÁVILA · ALTA JOYERÍA · LÓGICA DEL SITIO
    Sitio de una sola página con rutas por #hash:
    #inicio · #coleccion · #pieza-01 … #pieza-09 · #probador · #coleccionistas · #orfebre
    ============================================================================= */
@@ -9,17 +9,17 @@
 const UI = {
     es: {
         sub: "Alta joyería · Valparaíso, Chile",
-        nav: { inicio: "Colección", coleccion: "Catálogo", probador: "Probador", coleccionistas: "Adquisición", orfebre: "El orfebre" },
+        nav: { inicio: "Colección", nuevo: "Lo nuevo", coleccion: "Catálogo", probador: "Probador", coleccionistas: "Adquisición", orfebre: "El orfebre" },
         temaClaro: "Galería", temaOscuro: "Nocturno", cofre: "Cofre",
-        heroEyebrow: "Colección de alta joyería · Nueve obras únicas",
+        heroEyebrow: "Alta joyería · Plata y rodocrosita · Obras únicas",
         heroTitulo: "Hecha de Tiempo",
         heroLead: "Plata y rodocrosita. La rodocrosita crece capa sobre capa durante miles de años: cada banda rosa y blanca es tiempo hecho piedra, y por eso ninguna se repite. Pasa el cursor sobre cada obra para verla en detalle.",
         verCatalogo: "Ver el catálogo", probar: "Probador virtual", privilegios: "Privilegios por conjunto",
         salas: [
-            ["I · Catálogo", "Las nueve obras", "Fichas completas con fotografía real de cada pieza, historia y valores."],
+            ["I · Catálogo", "Todas las obras", "Fichas completas con fotografía real de cada pieza, historia y valores."],
             ["II · Probador", "Mídete las joyas", "Prueba cada colgante sobre tu foto o frente a la cámara de tu dispositivo."],
             ["III · Coleccionistas", "Conjuntos", "Elige dos o más obras y la bonificación se aplica automáticamente."],
-            ["IV · El orfebre", "Jorge Pérez", "La historia del taller y el método detrás de cada pieza."]
+            ["IV · El orfebre", "Jorge Ávila", "La historia del taller y el método detrás de cada pieza."]
         ],
         catTitulo: "Catálogo", catLead: "Cada obra existe una sola vez. En cada ficha se muestra también la fotografía real de la pieza.",
         filtros: { todas: "Todas", orbital: "Circulares", organica: "Orgánicas", geometrica: "Geométricas" },
@@ -31,12 +31,12 @@ const UI = {
         unica: "Pieza única, 1 de 1",
         consultarMedidas: "Las medidas exactas se informan al consultar por WhatsApp.",
         probarEsta: "Probar esta obra", whatsapp: "Consultar por WhatsApp",
-        msgPieza: (c, t, p) => `Hola, me interesa la obra ${c} (${t}) de la colección Hecha de Tiempo de Jorge Pérez (${p}). ¿Me pueden dar más información?`,
+        msgPieza: (c, t, p, col) => `Hola, me interesa la obra ${c} (${t}) de la colección ${col} de Jorge Ávila (${p}). ¿Me pueden dar más información?`,
         cofreTitulo: "Tu selección", cofreVacio: "Tu cofre está vacío. Elige una o más obras para preparar tu reserva.",
         bonoActivo: (n) => `Bonificación de coleccionista aplicada: ${n}%`,
         bonoPista: "Bonificación: 10% al elegir 2 obras · 18% desde 3 obras",
         coordinar: "Coordinar la adquisición por WhatsApp", quitar: "Quitar",
-        msgCofre: (lista, total, bono) => `Hola, me gustaría adquirir estas obras de la colección Hecha de Tiempo de Jorge Pérez: ${lista}. Valor total${bono ? ` con ${bono}% de bonificación` : ""}: ${total}.`,
+        msgCofre: (lista, total, bono) => `Hola, me gustaría adquirir estas obras de Jorge Ávila: ${lista}. Valor total${bono ? ` con ${bono}% de bonificación` : ""}: ${total}.`,
         tryTitulo: "Probador virtual", tryLead: "Usa la cámara o sube una foto tuya de frente. Arrastra la joya hasta tu cuello y ajusta su tamaño.",
         camara: "Activar cámara", detener: "Detener cámara", subir: "Subir una foto", tamano: "Tamaño",
         camaraError: "No se pudo abrir la cámara en este navegador. Puedes subir una foto tuya en su lugar.",
@@ -50,22 +50,27 @@ const UI = {
         tasasNota: (f) => `Valores en dólares y euros referenciales (${f}). El precio oficial es en pesos chilenos.`,
         pie: "Imágenes de campaña creadas digitalmente a partir de fotografías reales de cada pieza. La fotografía real se muestra en cada ficha.",
         precio: "Valor", obra: "Obra",
+        anuncioEyebrow: "Nueva colección · Trece obras", anuncioTitulo: "Vetas del Sur", anuncioTexto: "Ocho colgantes y cinco pares de aros en plata y rodocrosita. Cada obra con su presentación en 3D.", anuncioCta: "Descubrir lo nuevo",
+        nuevoEyebrow: "Lo nuevo · Nueva colección", nuevoLead: "Trece obras únicas: ocho colgantes de dos piedras unidas por una bisagra de plata y cinco pares de aros. Toca una obra para ver su presentación y explorarla en 3D.",
+        colecciones: { todas: "Todas las colecciones", hecha: "Hecha de Tiempo", vetas: "Vetas del Sur" }, tipos: { colgante: "Colgante", aros: "Aros" }, nueva: "Nueva",
+        modelo3d: "Modelo 3D", ayuda3d: "Arrastra para girar · rueda o pellizco para acercar · doble clic para centrar",
+        presentacion: "Presentación de la obra", verPresentacion: "Ver la presentación", saltarPres: "Saltar", nota3d: "Modelo reconstruido desde la fotografía real: el contorno y la piedra son los de la pieza; el grosor es aproximado.",
         entrar: "Entrar con sonido", saltar: "Saltar", sonidoOn: "Activar sonido", sonidoOff: "Silenciar", introNota: "Presentación de 15 segundos con narración.",
-        msgGeneral: "Hola, vengo de la página de Jorge Pérez y me gustaría recibir información sobre la colección Hecha de Tiempo."
+        msgGeneral: "Hola, vengo de la página de Jorge Ávila y me gustaría recibir información sobre la colección Hecha de Tiempo."
     },
     fr: {
         sub: "Haute joaillerie · Valparaíso, Chili",
-        nav: { inicio: "Collection", coleccion: "Catalogue", probador: "Essayage", coleccionistas: "Acquisition", orfebre: "L'orfèvre" },
+        nav: { inicio: "Collection", nuevo: "Nouveautés", coleccion: "Catalogue", probador: "Essayage", coleccionistas: "Acquisition", orfebre: "L'orfèvre" },
         temaClaro: "Galerie", temaOscuro: "Nocturne", cofre: "Écrin",
-        heroEyebrow: "Collection de haute joaillerie · Neuf œuvres uniques",
+        heroEyebrow: "Haute joaillerie · Argent et rhodochrosite · Œuvres uniques",
         heroTitulo: "Hecha de Tiempo",
         heroLead: "Argent et rhodochrosite. La rhodochrosite se forme couche après couche pendant des milliers d'années : chaque bande rose et blanche est du temps devenu pierre, et aucune ne se répète. Survolez chaque œuvre pour la découvrir en détail.",
         verCatalogo: "Voir le catalogue", probar: "Essayage virtuel", privilegios: "Privilèges par ensemble",
         salas: [
-            ["I · Catalogue", "Les neuf œuvres", "Fiches complètes avec la photographie réelle de chaque pièce, son histoire et ses prix."],
+            ["I · Catalogue", "Toutes les œuvres", "Fiches complètes avec la photographie réelle de chaque pièce, son histoire et ses prix."],
             ["II · Essayage", "Essayez les bijoux", "Essayez chaque pendentif sur votre photo ou devant la caméra de votre appareil."],
             ["III · Collectionneurs", "Ensembles", "Choisissez deux œuvres ou plus et le privilège s'applique automatiquement."],
-            ["IV · L'orfèvre", "Jorge Pérez", "L'histoire de l'atelier et la méthode derrière chaque pièce."]
+            ["IV · L'orfèvre", "Jorge Ávila", "L'histoire de l'atelier et la méthode derrière chaque pièce."]
         ],
         catTitulo: "Catalogue", catLead: "Chaque œuvre n'existe qu'une fois. Chaque fiche montre aussi la photographie réelle de la pièce.",
         filtros: { todas: "Toutes", orbital: "Circulaires", organica: "Organiques", geometrica: "Géométriques" },
@@ -77,12 +82,12 @@ const UI = {
         unica: "Pièce unique, 1 sur 1",
         consultarMedidas: "Les dimensions exactes sont communiquées sur WhatsApp.",
         probarEsta: "Essayer cette œuvre", whatsapp: "Demander sur WhatsApp",
-        msgPieza: (c, t, p) => `Bonjour, je suis intéressé(e) par l'œuvre ${c} (${t}) de la collection Hecha de Tiempo de Jorge Pérez (${p}). Pourriez vous m'en dire plus ?`,
+        msgPieza: (c, t, p, col) => `Bonjour, je suis intéressé(e) par l'œuvre ${c} (${t}) de la collection ${col} de Jorge Ávila (${p}). Pourriez vous m'en dire plus ?`,
         cofreTitulo: "Votre sélection", cofreVacio: "Votre écrin est vide. Choisissez une ou plusieurs œuvres pour préparer votre réservation.",
         bonoActivo: (n) => `Privilège collectionneur appliqué : ${n} %`,
         bonoPista: "Privilège : 10 % pour 2 œuvres · 18 % dès 3 œuvres",
         coordinar: "Finaliser l'acquisition sur WhatsApp", quitar: "Retirer",
-        msgCofre: (lista, total, bono) => `Bonjour, je souhaite acquérir ces œuvres de la collection Hecha de Tiempo de Jorge Pérez : ${lista}. Montant total${bono ? ` avec ${bono} % de privilège` : ""} : ${total}.`,
+        msgCofre: (lista, total, bono) => `Bonjour, je souhaite acquérir ces œuvres de Jorge Ávila : ${lista}. Montant total${bono ? ` avec ${bono} % de privilège` : ""} : ${total}.`,
         tryTitulo: "Essayage virtuel", tryLead: "Utilisez la caméra ou importez une photo de face. Faites glisser le bijou jusqu'à votre cou et ajustez sa taille.",
         camara: "Activer la caméra", detener: "Arrêter la caméra", subir: "Importer une photo", tamano: "Taille",
         camaraError: "Impossible d'ouvrir la caméra dans ce navigateur. Vous pouvez importer une photo à la place.",
@@ -96,22 +101,27 @@ const UI = {
         tasasNota: (f) => `Montants en dollars et en euros donnés à titre indicatif (${f}). Le prix officiel est en pesos chiliens.`,
         pie: "Images de campagne créées numériquement à partir de photographies réelles de chaque pièce. La photographie réelle figure sur chaque fiche.",
         precio: "Prix", obra: "Œuvre",
+        anuncioEyebrow: "Nouvelle collection · Treize œuvres", anuncioTitulo: "Veines du Sud", anuncioTexto: "Huit pendentifs et cinq paires de boucles en argent et rhodochrosite. Chaque œuvre avec sa présentation en 3D.", anuncioCta: "Découvrir les nouveautés",
+        nuevoEyebrow: "Nouveautés · Nouvelle collection", nuevoLead: "Treize œuvres uniques : huit pendentifs à deux pierres reliées par une charnière d'argent et cinq paires de boucles. Touchez une œuvre pour voir sa présentation et l'explorer en 3D.",
+        colecciones: { todas: "Toutes les collections", hecha: "Hecha de Tiempo", vetas: "Veines du Sud" }, tipos: { colgante: "Pendentif", aros: "Boucles" }, nueva: "Nouveau",
+        modelo3d: "Modèle 3D", ayuda3d: "Glissez pour tourner · molette ou pincement pour zoomer · double clic pour centrer",
+        presentacion: "Présentation de l'œuvre", verPresentacion: "Voir la présentation", saltarPres: "Passer", nota3d: "Modèle reconstruit à partir de la photographie réelle : le contour et la pierre sont ceux de la pièce ; l'épaisseur est approximative.",
         entrar: "Entrer avec le son", saltar: "Passer", sonidoOn: "Activer le son", sonidoOff: "Couper le son", introNota: "Présentation de 15 secondes, avec narration.",
-        msgGeneral: "Bonjour, je viens du site de Jorge Pérez et je souhaiterais recevoir des informations sur la collection Hecha de Tiempo."
+        msgGeneral: "Bonjour, je viens du site de Jorge Ávila et je souhaiterais recevoir des informations sur la collection Hecha de Tiempo."
     },
     en: {
         sub: "High jewelry · Valparaíso, Chile",
-        nav: { inicio: "Collection", coleccion: "Catalog", probador: "Try on", coleccionistas: "Acquisition", orfebre: "The goldsmith" },
+        nav: { inicio: "Collection", nuevo: "What's new", coleccion: "Catalog", probador: "Try on", coleccionistas: "Acquisition", orfebre: "The goldsmith" },
         temaClaro: "Gallery", temaOscuro: "Night", cofre: "Selection",
-        heroEyebrow: "High jewelry collection · Nine unique works",
+        heroEyebrow: "High jewelry · Silver and rhodochrosite · Unique works",
         heroTitulo: "Hecha de Tiempo",
         heroLead: "Silver and rhodochrosite. Rhodochrosite grows layer upon layer over thousands of years: every pink and white band is time turned into stone, and no two are alike. Hover over each work to see it in detail.",
         verCatalogo: "View the catalog", probar: "Virtual try on", privilegios: "Set privileges",
         salas: [
-            ["I · Catalog", "The nine works", "Full sheets with a real photograph of each piece, its story and its price."],
+            ["I · Catalog", "All the works", "Full sheets with a real photograph of each piece, its story and its price."],
             ["II · Try on", "Try the jewels", "Try each pendant on your photo or in front of your device's camera."],
             ["III · Collectors", "Sets", "Choose two or more works and the privilege is applied automatically."],
-            ["IV · The goldsmith", "Jorge Pérez", "The story of the workshop and the method behind each piece."]
+            ["IV · The goldsmith", "Jorge Ávila", "The story of the workshop and the method behind each piece."]
         ],
         catTitulo: "Catalog", catLead: "Each work exists only once. Every sheet also shows the real photograph of the piece.",
         filtros: { todas: "All", orbital: "Circular", organica: "Organic", geometrica: "Geometric" },
@@ -123,12 +133,12 @@ const UI = {
         unica: "Unique piece, 1 of 1",
         consultarMedidas: "Exact dimensions are provided on WhatsApp.",
         probarEsta: "Try this work", whatsapp: "Ask on WhatsApp",
-        msgPieza: (c, t, p) => `Hello, I am interested in work ${c} (${t}) from Jorge Pérez's Hecha de Tiempo collection (${p}). Could you tell me more?`,
+        msgPieza: (c, t, p, col) => `Hello, I am interested in work ${c} (${t}) from Jorge Ávila's ${col} collection (${p}). Could you tell me more?`,
         cofreTitulo: "Your selection", cofreVacio: "Your selection is empty. Choose one or more works to prepare your reservation.",
         bonoActivo: (n) => `Collector privilege applied: ${n}%`,
         bonoPista: "Privilege: 10% for 2 works · 18% from 3 works",
         coordinar: "Arrange the acquisition on WhatsApp", quitar: "Remove",
-        msgCofre: (lista, total, bono) => `Hello, I would like to acquire these works from Jorge Pérez's Hecha de Tiempo collection: ${lista}. Total${bono ? ` with ${bono}% privilege` : ""}: ${total}.`,
+        msgCofre: (lista, total, bono) => `Hello, I would like to acquire these works by Jorge Ávila: ${lista}. Total${bono ? ` with ${bono}% privilege` : ""}: ${total}.`,
         tryTitulo: "Virtual try on", tryLead: "Use the camera or upload a front facing photo of yourself. Drag the jewel to your neck and adjust its size.",
         camara: "Turn on camera", detener: "Stop camera", subir: "Upload a photo", tamano: "Size",
         camaraError: "The camera could not be opened in this browser. You can upload a photo instead.",
@@ -142,8 +152,13 @@ const UI = {
         tasasNota: (f) => `Dollar and euro amounts are for reference only (${f}). The official price is in Chilean pesos.`,
         pie: "Campaign images created digitally from real photographs of each piece. The real photograph is shown on every sheet.",
         precio: "Price", obra: "Work",
+        anuncioEyebrow: "New collection · Thirteen works", anuncioTitulo: "Southern Veins", anuncioTexto: "Eight pendants and five pairs of earrings in silver and rhodochrosite. Each work with its own 3D presentation.", anuncioCta: "Discover what's new",
+        nuevoEyebrow: "What's new · New collection", nuevoLead: "Thirteen unique works: eight pendants with two stones joined by a silver hinge and five pairs of earrings. Tap a work to watch its presentation and explore it in 3D.",
+        colecciones: { todas: "All collections", hecha: "Hecha de Tiempo", vetas: "Southern Veins" }, tipos: { colgante: "Pendant", aros: "Earrings" }, nueva: "New",
+        modelo3d: "3D model", ayuda3d: "Drag to rotate · wheel or pinch to zoom · double click to center",
+        presentacion: "Presentation of the work", verPresentacion: "Watch the presentation", saltarPres: "Skip", nota3d: "Model rebuilt from the real photograph: the outline and stone are the piece's own; the thickness is approximate.",
         entrar: "Enter with sound", saltar: "Skip", sonidoOn: "Sound on", sonidoOff: "Mute", introNota: "A 15 second presentation with narration.",
-        msgGeneral: "Hello, I come from Jorge Pérez's website and would like information about the Hecha de Tiempo collection."
+        msgGeneral: "Hello, I come from Jorge Ávila's website and would like information about the Hecha de Tiempo collection."
     }
 };
 
@@ -273,9 +288,9 @@ function refreshCartButtons() {
 function card(j) {
     const t = T(); const p = money(j.precioCLP);
     return `<article class="jewel-card">
-        <a href="#pieza-${j.id}" class="jc-img ${j.img.ambiente ? "" : "is-real"}"><img src="${mainImg(j)}" alt="${esc(L(j.titulo))}" loading="lazy"></a>
+        <a href="#pieza-${j.id}" class="jc-img ${j.img.ambiente ? "" : "is-real"}">${COLECCIONES[j.coleccion].nueva ? `<span class="badge">${esc(t.nueva)}</span>` : ""}<img src="${mainImg(j)}" alt="${esc(L(j.titulo))}" loading="lazy"></a>
         <div class="jc-body">
-            <span class="eyebrow">${esc(t.obra)} ${j.code}</span>
+            <span class="eyebrow">${esc(t.obra)} ${j.code} · ${esc(t.tipos[j.tipo] || "")}</span>
             <h3 class="jc-title">${esc(L(j.titulo))}</h3>
             <p class="jc-text">${esc(L(j.resumen))}</p>
             <div class="jc-price">${p.primary}</div>
@@ -391,7 +406,7 @@ function intro() {
 
 function viewInicio() {
     const t = T();
-    const panels = JEWELS.filter(j => j.portada !== false).map((j, i) => `
+    const panels = JEWELS.filter(j => j.portada !== false && j.coleccion === "hecha").map((j, i) => `
         <a href="#pieza-${j.id}" class="panel ${i === 0 ? "on" : ""} ${j.img.ambiente ? "" : "is-real"}" data-i="${i}">
             <img src="${mainImg(j)}" alt="${esc(L(j.titulo))}" ${i > 2 ? 'loading="lazy"' : ""}>
             <div class="panel-ov">
@@ -403,6 +418,10 @@ function viewInicio() {
     <section class="hero">
         ${film("intro", `<span class="eyebrow">${esc(t.heroEyebrow)}</span><h1 class="hero-title">${esc(t.heroTitulo)}</h1><p class="lead">${esc(t.heroLead)}</p>`, "film-hero")}
         <div class="ribbon" id="ribbon">${panels}</div>
+        <a class="anuncio" href="#nuevo">
+            <div class="anuncio-pics">${JEWELS.filter(j => COLECCIONES[j.coleccion].nueva).slice(0, 5).map(j => `<img src="${j.img.ambiente}" alt="" loading="lazy">`).join("")}</div>
+            <div class="anuncio-txt"><span class="eyebrow">${esc(t.anuncioEyebrow)}</span><h2>${esc(t.anuncioTitulo)}</h2><p>${esc(t.anuncioTexto)}</p><span class="btn btn-solid">${esc(t.anuncioCta)} →</span></div>
+        </a>
         <div class="hero-actions">
             <a href="#coleccion" class="btn btn-solid">${esc(t.verCatalogo)}</a>
             <a href="#probador" class="btn">${esc(t.probar)}</a>
@@ -421,18 +440,31 @@ function afterInicio() {
     });
 }
 
-let filtro = "todas";
+function viewNuevo() {
+    const t = T();
+    const nuevas = JEWELS.filter(j => COLECCIONES[j.coleccion].nueva);
+    return `<section class="page">
+        ${film("nuevo", `<span class="eyebrow">${esc(t.nuevoEyebrow)}</span><h1 class="page-title">${esc(t.anuncioTitulo)}</h1><p class="lead">${esc(t.nuevoLead)}</p>`, "film-wide")}
+        <div class="grid" id="grid">${nuevas.map(card).join("")}</div>
+        <p class="muted small center">${esc(t.tasasNota(L(CONFIG.tasasFecha)))}</p>
+    </section>`;
+}
+function afterNuevo() { bindAdd(); }
+
+let filtro = "todas", filtroCol = "todas";
 function viewColeccion() {
     const t = T();
     return `<section class="page">
         ${film("coleccion", `<h1 class="page-title">${esc(t.catTitulo)}</h1><p class="lead">${esc(t.catLead)}</p>`)}
+        <div class="filters">${Object.keys(t.colecciones).map(k => `<button class="pill ${filtroCol === k ? "active" : ""}" data-col="${k}">${esc(t.colecciones[k])}</button>`).join("")}</div>
         <div class="filters">${Object.keys(t.filtros).map(k => `<button class="pill ${filtro === k ? "active" : ""}" data-filter="${k}">${esc(t.filtros[k])}</button>`).join("")}</div>
-        <div class="grid" id="grid">${JEWELS.filter(j => filtro === "todas" || j.categoria === filtro).map(card).join("")}</div>
+        <div class="grid" id="grid">${JEWELS.filter(j => (filtro === "todas" || j.categoria === filtro) && (filtroCol === "todas" || j.coleccion === filtroCol)).map(card).join("")}</div>
         <p class="muted small center">${esc(t.tasasNota(L(CONFIG.tasasFecha)))}</p>
     </section>`;
 }
 function afterColeccion() {
     document.querySelectorAll("[data-filter]").forEach(b => b.addEventListener("click", () => { filtro = b.dataset.filter; render(); }));
+    document.querySelectorAll("[data-col]").forEach(b => b.addEventListener("click", () => { filtroCol = b.dataset.col; render(); }));
     bindAdd();
 }
 
@@ -454,6 +486,7 @@ function viewPieza(id) {
     if (j.medidas) filas.push([t.ficha.medidas, j.medidas]);
     if (j.peso) filas.push([t.ficha.peso, j.peso]);
     filas.push([t.ficha.edicion, t.unica]);
+    const base = PRESENTACION.carpeta + j.id;
     return `<section class="page">
         <div class="piece-nav">
             <a href="#coleccion" class="pill">← ${esc(t.volver)}</a>
@@ -461,14 +494,23 @@ function viewPieza(id) {
         </div>
         <div class="piece">
             <div class="piece-stage">
-                <div class="stage-main ${vistas[0].real ? "is-real" : ""}" id="stage-main"><img id="stage-img" src="${vistas[0].src}" alt="${esc(L(j.titulo))}"></div>
-                <div class="stage-thumbs">
-                    ${vistas.map((v, k) => `<button class="sthumb ${k === 0 ? "on" : ""}" data-src="${v.src}" data-real="${v.real ? 1 : 0}"><img src="${v.src}" alt=""><span>${esc(v.label)}</span></button>`).join("")}
-                    ${j.img.ambiente ? "" : `<div class="sthumb placeholder"><span>${esc(t.sinAmbiente)}</span></div>`}
+                <div class="stage-main is-3d" id="stage-main">
+                    <model-viewer id="mv" src="${base}.glb" poster="${base}.jpg" alt="${esc(L(j.titulo))}" camera-controls auto-rotate-delay="2500"
+                        rotation-per-second="14deg" interaction-prompt="none" shadow-intensity="0" exposure="1.05" tone-mapping="aces"
+                        environment-image="neutral" camera-orbit="0deg 88deg auto" min-camera-orbit="auto auto 20%" max-camera-orbit="auto auto 200%"
+                        interpolation-decay="160" loading="eager"></model-viewer>
+                    <img id="stage-img" alt="${esc(L(j.titulo))}" hidden>
+                    <p class="hint3d" id="hint3d">${esc(t.ayuda3d)}</p>
                 </div>
+                <div class="stage-thumbs">
+                    <button class="sthumb on" data-3d="1"><img src="${base}.jpg" alt=""><span>${esc(t.modelo3d)}</span></button>
+                    ${vistas.map(v => `<button class="sthumb" data-src="${v.src}" data-real="${v.real ? 1 : 0}"><img src="${v.src}" alt=""><span>${esc(v.label)}</span></button>`).join("")}
+                    <button class="sthumb" data-pres="1"><img src="${base}.jpg" alt=""><span>${esc(t.verPresentacion)}</span></button>
+                </div>
+                <p class="muted small">${esc(t.nota3d)}</p>
             </div>
             <div class="piece-info">
-                <span class="eyebrow">${esc(t.obra)} ${j.code} · Hecha de Tiempo</span>
+                <span class="eyebrow">${esc(t.obra)} ${j.code} · ${esc(L(COLECCIONES[j.coleccion].nombre))}</span>
                 <h1 class="page-title left">${esc(L(j.titulo))}</h1>
                 <p class="piece-lead">${esc(L(j.resumen))}</p>
                 <div class="price-box"><div class="price-main">${p.primary}</div><div class="muted small">${p.otros}</div></div>
@@ -479,19 +521,56 @@ function viewPieza(id) {
                     <button class="btn btn-solid" data-add="${j.id}">${esc(t.anadir)}</button>
                     <a href="#probador-${j.id}" class="btn">${esc(t.probarEsta)}</a>
                 </div>
-                <a class="btn full" style="margin-top:.8rem" target="_blank" rel="noopener" href="${waLink(t.msgPieza(j.code, L(j.titulo), p.clp))}">${esc(t.whatsapp)} · ${esc(CONFIG.whatsappVisible)}</a>
+                <a class="btn full" style="margin-top:.8rem" target="_blank" rel="noopener" href="${waLink(t.msgPieza(j.code, L(j.titulo), p.clp, L(COLECCIONES[j.coleccion].nombre)))}">${esc(t.whatsapp)} · ${esc(CONFIG.whatsappVisible)}</a>
             </div>
         </div>
     </section>`;
 }
-function afterPieza() {
-    document.querySelectorAll(".sthumb[data-src]").forEach(b => b.addEventListener("click", () => {
-        $("#stage-img").src = b.dataset.src;
-        $("#stage-main").classList.toggle("is-real", b.dataset.real === "1");
+function afterPieza(id) {
+    const j = byId(id) || JEWELS[0];
+    const mv = $("#mv"), img = $("#stage-img"), main = $("#stage-main");
+    const show3d = (on) => { mv.hidden = !on; img.hidden = on; $("#hint3d").hidden = !on; main.classList.toggle("is-3d", on); };
+    document.querySelectorAll(".sthumb").forEach(b => b.addEventListener("click", () => {
+        if (b.dataset.pres) { presentacion(j, true); return; }
         document.querySelectorAll(".sthumb").forEach(x => x.classList.remove("on")); b.classList.add("on");
+        if (b.dataset["3d"]) { show3d(true); return; }
+        show3d(false); img.src = b.dataset.src; main.classList.toggle("is-real", b.dataset.real === "1");
     }));
-    $("#stage-main").addEventListener("click", () => openZoom($("#stage-img").src));
+    img.addEventListener("click", () => openZoom(img.src));
     bindAdd();
+    presentacion(j, false);
+}
+
+/* Presentación de la obra: video 3D a pantalla completa sobre negro. La primera vez que se abre
+   cada obra es obligatoria; luego aparece "Saltar". Al terminar se desvanece y queda la ficha. */
+function presentacion(j, manual) {
+    const t = T(); const el = $("#pres");
+    const vistas = store.get("jp2_pres", []);
+    const visto = vistas.includes(j.id) || !PRESENTACION.obligatoria;
+    if (!manual && document.body.classList.contains("intro-on")) return;
+    const src = PRESENTACION.carpeta + j.id;
+    el.innerHTML = `
+        <video id="pres-v" src="${src}.mp4" poster="${src}.jpg" muted playsinline preload="auto"></video>
+        <div class="pres-cap"><span class="eyebrow">${esc(t.presentacion)} · ${esc(t.obra)} ${j.code}</span><h2>${esc(L(j.titulo))}</h2><span class="pres-col">${esc(L(COLECCIONES[j.coleccion].nombre))}</span></div>
+        <div class="pres-bar"><span id="pres-prog"></span></div>
+        <button class="pres-skip" id="pres-skip" type="button" ${visto || manual ? "" : "hidden"}>${esc(t.saltarPres)}</button>`;
+    el.hidden = false; el.classList.remove("out"); document.body.classList.add("pres-on");
+    const v = $("#pres-v"); let done = false;
+    const close = (motivo) => {
+        if (done) return; done = true;
+        if (window.JP_DEBUG) console.log("presentacion cerrada:", motivo, v.currentTime, v.duration, performance.now());
+        if (!vistas.includes(j.id)) { vistas.push(j.id); store.set("jp2_pres", vistas); }
+        el.classList.add("out"); document.body.classList.remove("pres-on");
+        const mv = $("#mv"); if (mv) { mv.cameraOrbit = "0deg 88deg auto"; mv.autoRotate = true; }
+        setTimeout(() => { el.hidden = true; el.innerHTML = ""; }, 900);
+    };
+    v.addEventListener("ended", () => close("fin"));
+    v.addEventListener("error", () => close("error"));
+    v.addEventListener("timeupdate", () => { if (v.duration) $("#pres-prog").style.width = (v.currentTime / v.duration * 100) + "%"; if (v.duration && v.currentTime > v.duration - 0.9) el.classList.add("fading"); });
+    $("#pres-skip").addEventListener("click", () => close("saltar"));
+    if (window.JP_DEBUG) console.log("presentacion inicio", performance.now());
+    v.play().catch(() => { v.controls = true; $("#pres-skip").hidden = false; });
+    setTimeout(() => { if (!done && v.readyState === 0) close("sin carga"); }, 8000);
 }
 
 /* ------------------------------------------------------------- probador */
@@ -630,7 +709,7 @@ function parse() {
     let m;
     if ((m = h.match(/^pieza-(\d{2})$/))) return { route: "pieza", id: m[1] };
     if ((m = h.match(/^probador-(\d{2})$/))) return { route: "probador", id: m[1] };
-    if (["inicio", "coleccion", "probador", "coleccionistas", "orfebre"].includes(h)) return { route: h };
+    if (["inicio", "nuevo", "coleccion", "probador", "coleccionistas", "orfebre"].includes(h)) return { route: h };
     return { route: "inicio" };
 }
 function render() {
@@ -638,7 +717,7 @@ function render() {
     if (route !== "probador") stopCamera();
     renderHeader(route);
     const views = {
-        inicio: [viewInicio, afterInicio], coleccion: [viewColeccion, afterColeccion], pieza: [viewPieza, afterPieza],
+        inicio: [viewInicio, afterInicio], nuevo: [viewNuevo, afterNuevo], coleccion: [viewColeccion, afterColeccion], pieza: [viewPieza, afterPieza],
         probador: [viewProbador, afterProbador], coleccionistas: [viewColeccionistas, afterColeccionistas], orfebre: [viewOrfebre, null]
     };
     const [v, a] = views[route];
@@ -655,7 +734,7 @@ document.addEventListener("DOMContentLoaded", () => {
     $("#veil").addEventListener("click", () => toggleCart(false));
     $("#zoom").addEventListener("click", () => $("#zoom").classList.remove("on"));
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") { toggleCart(false); $("#zoom").classList.remove("on"); } });
-    window.addEventListener("hashchange", () => { render(); window.scrollTo(0, 0); });
+    window.addEventListener("hashchange", () => { const pr = $("#pres"); if (pr) { pr.hidden = true; pr.innerHTML = ""; document.body.classList.remove("pres-on"); } render(); window.scrollTo(0, 0); });
     render();
     intro();
 });

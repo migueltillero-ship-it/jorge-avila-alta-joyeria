@@ -1,5 +1,5 @@
 ﻿# =============================================================================
-#  JORGE PEREZ · ALTA JOYERIA · ACTUALIZAR Y PUBLICAR EL SITIO
+#  JORGE AVILA · ALTA JOYERIA · ACTUALIZAR Y PUBLICAR EL SITIO
 #  Uso (en PowerShell, dentro de la carpeta jorge-perez-alta-joyeria):
 #    powershell -ExecutionPolicy Bypass -File .\ACTUALIZAR.ps1
 #  Opciones:
@@ -93,7 +93,7 @@ if ($sinMedidas -gt 0) { Write-Host "  Aviso: $sinMedidas piezas sin medidas (se
 if ($Publicar) {
     Titulo "3. Publicando en GitHub"
     if (-not (Get-Command git -ErrorAction SilentlyContinue)) { throw "No se encontro git en este equipo." }
-    git add index.html coleccion.html joya.html probador.html coleccionistas.html orfebre.html css js assets/piezas assets/video supabase ACTUALIZAR.ps1 CAMBIOS.md
+    git add index.html coleccion.html joya.html probador.html coleccionistas.html orfebre.html css js assets/piezas assets/video assets/3d assets/vendor herramientas INSTALAR.ps1 .gitignore supabase ACTUALIZAR.ps1 CAMBIOS.md
     if ($LASTEXITCODE -ne 0) { throw "git add fallo." }
     git diff --cached --quiet
     if ($LASTEXITCODE -eq 0) {

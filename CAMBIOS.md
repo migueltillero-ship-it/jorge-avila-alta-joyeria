@@ -1,4 +1,16 @@
-# Sitio v2 · Jorge Pérez · Hecha de Tiempo
+## Versión 3 · Nueva colección "Vetas del Sur" y experiencia 3D (noviembre de 2026)
+- Trece obras nuevas (X a XXII): ocho colgantes y cinco pares de aros, con nombre, historia en español, francés e inglés y precio PROVISORIO (revisar en js/catalog.js).
+- Portada: anuncio de la nueva colección bajo el video principal. Nueva sección "Lo nuevo" (#nuevo) y filtro por colección en el catálogo.
+- Cada una de las 22 obras tiene ahora:
+  · un modelo 3D (assets/3d/NN.glb) que se gira, acerca y aleja en su ficha;
+  · una presentación en video sobre fondo negro (assets/3d/NN.mp4), obligatoria la primera vez que se abre la obra; después aparece "Saltar". Se desvanece y deja la ficha con la historia y el modelo 3D;
+  · las obras nuevas, además, su imagen de campaña sobre terciopelo azul (renderizada desde el modelo, por eso respeta la forma exacta).
+- Cómo se hizo el 3D (fiel por construcción): el contorno de cada piedra sale de la foto real y conserva su textura real; la plata se reconstruye desde el eje medio de la foto; el engaste sigue el contorno exacto. El programa compara la silueta 3D con la foto (informe.json, campo iou_contorno) y corrige el grosor de la plata hasta que coinciden. Lo único aproximado es la profundidad, que una foto frontal no muestra.
+- Medidas usadas (aproximadas, cambiar en herramientas si Jorge da las reales): colgantes 38 a 45 mm de alto con argolla; aros 40 mm con gancho.
+- Herramientas locales: INSTALAR.ps1 (diagnóstico, instalación, verificación y vista previa) y herramientas/NUEVA_PIEZA.ps1 (agrega una joya nueva desde una foto, con su 3D, video e imagen de campaña).
+- Las fotos de las piezas nuevas son capturas de WhatsApp de baja resolución: con fotos originales del teléfono (o mejor, con luz difusa y fondo blanco) la textura de las piedras será más nítida.
+
+# Sitio v2 · Jorge Ávila · Hecha de Tiempo
 
 ## Qué se corrigió
 - Cada ficha muestra ahora la imagen de su propia pieza. Antes, las fichas II, III, IV, V, VIII y IX mezclaban la foto de una pieza con el nombre y el probador de otra.

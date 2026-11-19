@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jorge Pérez · Hecha de Tiempo</title>
-    <meta name="description" content="Hecha de Tiempo: nueve obras únicas de alta joyería en plata y rodocrosita de Jorge Pérez, Valparaíso, Chile.">
-    <meta property="og:title" content="Jorge Pérez · Hecha de Tiempo">
-    <meta property="og:description" content="Nueve obras únicas en plata y rodocrosita.">
+    <title>Jorge Ávila · Hecha de Tiempo</title>
+    <meta name="description" content="Hecha de Tiempo: nueve obras únicas de alta joyería en plata y rodocrosita de Jorge Ávila, Valparaíso, Chile.">
+    <meta property="og:title" content="Jorge Ávila · Hecha de Tiempo">
+    <meta property="og:description" content="Obras únicas en plata y rodocrosita.">
     <meta property="og:image" content="assets/piezas/01_ambiente.jpg">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 fill=%22%230D192B%22/%3E%3Ccircle cx=%2232%22 cy=%2236%22 r=%2213%22 fill=%22%23D48C98%22 stroke=%22%23E8E8E8%22 stroke-width=%224%22/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,12 @@
     <aside class="cart" id="cart" aria-hidden="true" aria-label="Cofre"></aside>
     <div class="zoom" id="zoom"><img alt=""></div>
     <div class="intro" id="intro" hidden role="dialog" aria-label="Presentación"></div>
+    <div class="pres" id="pres" hidden role="dialog" aria-label="Presentación de la obra"></div>
     <noscript><p style="padding:2rem;text-align:center">Este sitio necesita JavaScript activado.</p></noscript>
+    <script type="module">
+        import "./assets/vendor/model-viewer.min.js";
+        customElements.whenDefined("model-viewer").then(() => { customElements.get("model-viewer").dracoDecoderLocation = new URL("assets/vendor/draco/", location.href).href; });
+    </script>
     <script src="js/catalog.js"></script>
     <script src="js/app.js"></script>
 </body>
