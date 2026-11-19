@@ -18,6 +18,7 @@ param(
     [switch]$SinHerramientas3D
 )
 $ErrorActionPreference = "Continue"
+$env:GIT_ASK_YESNO = "false"   # git nunca debe quedarse esperando una respuesta (y/n)
 $Registro = Join-Path $env:USERPROFILE "Downloads\instalacion_jorge_perez.log"
 Start-Transcript -Path $Registro -Append | Out-Null
 $fallos = New-Object System.Collections.ArrayList
@@ -140,6 +141,8 @@ if (-not $SinHerramientas3D) {
 if ($Publicar) {
     Paso "8. Publicación en GitHub"
     Push-Location $Destino
+    attrib -R ".git\*" /S /D 2>$null | Out-Null
+    git config core.autocrlf false; git config gc.auto 0; git config maintenance.auto false
     git add -A
     git commit -m "Colección Vetas del Sur, presentaciones y modelos 3D" | Out-Null
     git push
