@@ -206,7 +206,7 @@ function renderHeader(route) {
         <a href="#inicio" class="brand"><span class="brand-name">${esc(CONFIG.marca)}</span><span class="brand-sub">${esc(t.sub)}</span></a>
         <button class="menu-btn" id="menu-btn" aria-label="Menú" aria-expanded="false">☰</button>
         <nav class="nav-links" id="nav-links">
-            ${Object.keys(t.nav).map(k => `<a href="#${k}" class="${act(k)}">${esc(t.nav[k])}</a>`).join("")}
+            ${Object.keys(t.nav).filter(k => k !== "nuevo" || JEWELS.some(j => COLECCIONES[j.coleccion].nueva)).map(k => `<a href="#${k}" class="${act(k)}">${esc(t.nav[k])}</a>`).join("")}
         </nav>
         <div class="controls">
             <div class="lang-switch" role="group" aria-label="Idioma">
@@ -418,10 +418,10 @@ function viewInicio() {
     <section class="hero">
         ${film("intro", `<span class="eyebrow">${esc(t.heroEyebrow)}</span><h1 class="hero-title">${esc(t.heroTitulo)}</h1><p class="lead">${esc(t.heroLead)}</p>`, "film-hero")}
         <div class="ribbon" id="ribbon">${panels}</div>
-        <a class="anuncio" href="#nuevo">
+        ${JEWELS.some(j => COLECCIONES[j.coleccion].nueva) ? `<a class="anuncio" href="#nuevo">
             <div class="anuncio-pics">${JEWELS.filter(j => COLECCIONES[j.coleccion].nueva).slice(0, 5).map(j => `<img src="${j.img.ambiente}" alt="" loading="lazy">`).join("")}</div>
             <div class="anuncio-txt"><span class="eyebrow">${esc(t.anuncioEyebrow)}</span><h2>${esc(t.anuncioTitulo)}</h2><p>${esc(t.anuncioTexto)}</p><span class="btn btn-solid">${esc(t.anuncioCta)} →</span></div>
-        </a>
+        </a>` : ""}
         <div class="hero-actions">
             <a href="#coleccion" class="btn btn-solid">${esc(t.verCatalogo)}</a>
             <a href="#probador" class="btn">${esc(t.probar)}</a>

@@ -91,7 +91,7 @@ if (-not (Test-Path (Join-Path $Destino ".git"))) {
 
 # -----------------------------------------------------------------------------
 Paso "4. Implementación de la nueva versión"
-$tmp = Join-Path $env:TEMP "jp_v3"
+$tmp = Join-Path $env:USERPROFILE "Proyectos\_tmp_jp_v3"
 Intentar "paquete descomprimido" {
     if (Test-Path $tmp) { Remove-Item $tmp -Recurse -Force }
     Expand-Archive -Path $Paquete -DestinationPath $tmp -Force

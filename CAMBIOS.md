@@ -1,3 +1,9 @@
+## Versión 4 · Solo Hecha de Tiempo, en alta resolución (noviembre de 2026)
+- El sitio queda con las 9 obras de Hecha de Tiempo (I a IX). Se retira Vetas del Sur y "Lo nuevo".
+- Imagen principal de cada obra: fotografía HD sobre terciopelo azul (1400 px de ancho).
+- Modelos 3D, videos de presentación y recortes del probador rehechos desde las fotos frontales de 1792 x 2400 px, con los calados de la plata abiertos.
+- Rama de trabajo: fotografia-hd. Publicación con PUBLICAR.ps1.
+
 ## Versión 3 · Nueva colección "Vetas del Sur" y experiencia 3D (noviembre de 2026)
 - Trece obras nuevas (X a XXII): ocho colgantes y cinco pares de aros, con nombre, historia en español, francés e inglés y precio PROVISORIO (revisar en js/catalog.js).
 - Portada: anuncio de la nueva colección bajo el video principal. Nueva sección "Lo nuevo" (#nuevo) y filtro por colección en el catálogo.
