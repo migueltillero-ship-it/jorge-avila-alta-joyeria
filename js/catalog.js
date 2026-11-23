@@ -56,11 +56,9 @@ const PRESENTACION = { obligatoria: true, carpeta: "assets/3d/" };
 
 /*  COLECCIONES
     hecha : Hecha de Tiempo (obras I a IX)
-    vetas : Vetas del Sur, la nueva colección (obras X a XXII). Textos y precios provisorios: revisar.
     Cada obra tiene además, en assets/3d/: NN.glb (modelo 3D), NN.mp4 (presentación) y NN.jpg (portada del video). */
 const COLECCIONES = {
-    hecha: { nombre: { es: "Hecha de Tiempo", fr: "Hecha de Tiempo", en: "Hecha de Tiempo" } },
-    vetas: { nombre: { es: "Vetas del Sur", fr: "Veines du Sud", en: "Southern Veins" }, nueva: true }
+    hecha: { nombre: { es: "Hecha de Tiempo", fr: "Hecha de Tiempo", en: "Hecha de Tiempo" } }
 };
 
 const JEWELS = [
