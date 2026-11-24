@@ -52,7 +52,7 @@ const UI = {
         precio: "Valor", obra: "Obra",
         anuncioEyebrow: "Nueva colección · Trece obras", anuncioTitulo: "Vetas del Sur", anuncioTexto: "Ocho colgantes y cinco pares de aros en plata y rodocrosita. Cada obra con su presentación en 3D.", anuncioCta: "Descubrir lo nuevo",
         nuevoEyebrow: "Lo nuevo · Nueva colección", nuevoLead: "Trece obras únicas: ocho colgantes de dos piedras unidas por una bisagra de plata y cinco pares de aros. Toca una obra para ver su presentación y explorarla en 3D.",
-        colecciones: { todas: "Todas las colecciones", hecha: "Hecha de Tiempo" }, tipos: { colgante: "Colgante", aros: "Aros" }, nueva: "Nueva",
+        colecciones: { todas: "Todas las colecciones", hecha: "Hecha de Tiempo", vetas: "Vetas del Sur" }, tipos: { colgante: "Colgante", aros: "Aros" }, nueva: "Nueva",
         modelo3d: "Modelo 3D", ayuda3d: "Arrastra para girar · rueda o pellizco para acercar · doble clic para centrar",
         presentacion: "Presentación de la obra", verPresentacion: "Ver la presentación", saltarPres: "Saltar", nota3d: "Modelo reconstruido desde la fotografía real: el contorno y la piedra son los de la pieza; el grosor es aproximado.",
         entrar: "Entrar con sonido", saltar: "Saltar", sonidoOn: "Activar sonido", sonidoOff: "Silenciar", introNota: "Presentación de 15 segundos con narración.",
@@ -103,7 +103,7 @@ const UI = {
         precio: "Prix", obra: "Œuvre",
         anuncioEyebrow: "Nouvelle collection · Treize œuvres", anuncioTitulo: "Veines du Sud", anuncioTexto: "Huit pendentifs et cinq paires de boucles en argent et rhodochrosite. Chaque œuvre avec sa présentation en 3D.", anuncioCta: "Découvrir les nouveautés",
         nuevoEyebrow: "Nouveautés · Nouvelle collection", nuevoLead: "Treize œuvres uniques : huit pendentifs à deux pierres reliées par une charnière d'argent et cinq paires de boucles. Touchez une œuvre pour voir sa présentation et l'explorer en 3D.",
-        colecciones: { todas: "Toutes les collections", hecha: "Hecha de Tiempo" }, tipos: { colgante: "Pendentif", aros: "Boucles" }, nueva: "Nouveau",
+        colecciones: { todas: "Toutes les collections", hecha: "Hecha de Tiempo", vetas: "Veines du Sud" }, tipos: { colgante: "Pendentif", aros: "Boucles" }, nueva: "Nouveau",
         modelo3d: "Modèle 3D", ayuda3d: "Glissez pour tourner · molette ou pincement pour zoomer · double clic pour centrer",
         presentacion: "Présentation de l'œuvre", verPresentacion: "Voir la présentation", saltarPres: "Passer", nota3d: "Modèle reconstruit à partir de la photographie réelle : le contour et la pierre sont ceux de la pièce ; l'épaisseur est approximative.",
         entrar: "Entrer avec le son", saltar: "Passer", sonidoOn: "Activer le son", sonidoOff: "Couper le son", introNota: "Présentation de 15 secondes, avec narration.",
@@ -154,7 +154,7 @@ const UI = {
         precio: "Price", obra: "Work",
         anuncioEyebrow: "New collection · Thirteen works", anuncioTitulo: "Southern Veins", anuncioTexto: "Eight pendants and five pairs of earrings in silver and rhodochrosite. Each work with its own 3D presentation.", anuncioCta: "Discover what's new",
         nuevoEyebrow: "What's new · New collection", nuevoLead: "Thirteen unique works: eight pendants with two stones joined by a silver hinge and five pairs of earrings. Tap a work to watch its presentation and explore it in 3D.",
-        colecciones: { todas: "All collections", hecha: "Hecha de Tiempo" }, tipos: { colgante: "Pendant", aros: "Earrings" }, nueva: "New",
+        colecciones: { todas: "All collections", hecha: "Hecha de Tiempo", vetas: "Southern Veins" }, tipos: { colgante: "Pendant", aros: "Earrings" }, nueva: "New",
         modelo3d: "3D model", ayuda3d: "Drag to rotate · wheel or pinch to zoom · double click to center",
         presentacion: "Presentation of the work", verPresentacion: "Watch the presentation", saltarPres: "Skip", nota3d: "Model rebuilt from the real photograph: the outline and stone are the piece's own; the thickness is approximate.",
         entrar: "Enter with sound", saltar: "Skip", sonidoOn: "Sound on", sonidoOff: "Mute", introNota: "A 15 second presentation with narration.",
@@ -206,7 +206,7 @@ function renderHeader(route) {
         <a href="#inicio" class="brand"><span class="brand-name">${esc(CONFIG.marca)}</span><span class="brand-sub">${esc(t.sub)}</span></a>
         <button class="menu-btn" id="menu-btn" aria-label="Menú" aria-expanded="false">☰</button>
         <nav class="nav-links" id="nav-links">
-            ${Object.keys(t.nav).filter(k => k !== "nuevo" || JEWELS.some(j => COLECCIONES[j.coleccion].nueva)).map(k => `<a href="#${k}" class="${act(k)}">${esc(t.nav[k])}</a>`).join("")}
+            ${Object.keys(t.nav).map(k => `<a href="#${k}" class="${act(k)}">${esc(t.nav[k])}</a>`).join("")}
         </nav>
         <div class="controls">
             <div class="lang-switch" role="group" aria-label="Idioma">
@@ -418,10 +418,10 @@ function viewInicio() {
     <section class="hero">
         ${film("intro", `<span class="eyebrow">${esc(t.heroEyebrow)}</span><h1 class="hero-title">${esc(t.heroTitulo)}</h1><p class="lead">${esc(t.heroLead)}</p>`, "film-hero")}
         <div class="ribbon" id="ribbon">${panels}</div>
-        ${JEWELS.some(j => COLECCIONES[j.coleccion].nueva) ? `<a class="anuncio" href="#nuevo">
+        <a class="anuncio" href="#nuevo">
             <div class="anuncio-pics">${JEWELS.filter(j => COLECCIONES[j.coleccion].nueva).slice(0, 5).map(j => `<img src="${j.img.ambiente}" alt="" loading="lazy">`).join("")}</div>
             <div class="anuncio-txt"><span class="eyebrow">${esc(t.anuncioEyebrow)}</span><h2>${esc(t.anuncioTitulo)}</h2><p>${esc(t.anuncioTexto)}</p><span class="btn btn-solid">${esc(t.anuncioCta)} →</span></div>
-        </a>` : ""}
+        </a>
         <div class="hero-actions">
             <a href="#coleccion" class="btn btn-solid">${esc(t.verCatalogo)}</a>
             <a href="#probador" class="btn">${esc(t.probar)}</a>
